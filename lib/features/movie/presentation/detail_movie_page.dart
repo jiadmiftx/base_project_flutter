@@ -4,7 +4,6 @@ import 'package:flutter_base/core/resource/injector/injection_container.dart';
 import 'package:flutter_base/core/utils/extensions/widget_util.dart';
 import 'package:flutter_base/features/movie/bloc/movie_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailMoviePage extends StatefulWidget {
   final int movieid;
@@ -92,16 +91,20 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                     Text14BlackRegular("${data?.overview}").padded(12),
                     Divider(),
                     Text18BlackBold("Reviews").padded(12),
-                    ListView.builder(
+                    state.reviewModelResponse?.totalResults != null ?
+                    Container(
+                      height: MediaQuery.of(context).size.height / 2,
+                      child: ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: state.reviewModelResponse?.results?.length,
+                        itemCount: state.reviewModelResponse!.results!.length > 3 ? 3 : state.reviewModelResponse?.results?.length,
                         itemBuilder: (context, index) {
                           var reviewer = state.reviewModelResponse?.results;
                           return Card(
                             child: Text12BlackRegular("${reviewer?[index].author ?? "Reviewer"}"),
                           );
                         }),
+                    ) : Center(child: Text("Empty Review")).bottomPadded20()
                     // Text14BlackRegular("${data?}").padded(12),
                   ],
                 ),

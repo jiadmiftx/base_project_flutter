@@ -142,20 +142,4 @@ class _MoviePageState extends State<MoviePage> {
       },
     );
   }
-
-  Container _placeholder() {
-    return Container(
-      padding: EdgeInsets.all(4),
-      height: 50,
-      width: 50,
-      child: Icon(
-        Icons.slow_motion_video_rounded,
-        size: 40,
-      ),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: BaseColor.colorDivider,
-      ),
-    );
-  }
 }
