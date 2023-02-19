@@ -12,9 +12,9 @@ class Repository implements RepositoryInterface {
   const Repository(this._rest);
 
   @override
-  Future<MovieModelResponse> getMovieNowPlaying({required String apikey}) async {
+  Future<MovieModelResponse> getMovie({required String apikey, required String type}) async {
     try {
-      final _response = await _rest.getMovieNowPlaying(apikey);
+      final _response = await _rest.getMovieNowPlaying(apikey, type);
       return _response;
     } on DioError catch (e) {
       return MovieModelResponse();
@@ -24,9 +24,9 @@ class Repository implements RepositoryInterface {
   }
 
   @override
-  Future<DetailMovieResponse> getMovieDetailNowPlaying({required String apikey, required int movie_id}) async {
-   try {
-      final _response = await _rest.getMovieDetailNowPlaying(apikey, movie_id);
+  Future<DetailMovieResponse> getMovieDetail({required String apikey, required int movie_id}) async {
+    try {
+      final _response = await _rest.getMovieDetail(apikey, movie_id);
       return _response;
     } on DioError catch (e) {
       return DetailMovieResponse();
@@ -36,12 +36,21 @@ class Repository implements RepositoryInterface {
   }
 
   @override
-  Future<ReviewModelResponse> getReviewMovieDetail({required String apikey, required int movie_id}) {
-    // TODO: implement getReviewMovieDetail
-    throw UnimplementedError();
-  }
-  
+  Future<ReviewModelResponse> getReviewMovieDetail({required String apikey, required int movie_id}) async {
+    try {
+      final _response = await _rest.getReviewMovieDetail(apikey, movie_id);
+      log("Response review ${_response.toJson()}");
+      return _response;
+    } on DioError catch (e) {
+      log("Response review dio error ${e}");
 
+      return ReviewModelResponse();
+    } catch (e) {
+      log("Response review e ${e}");
+
+      return ReviewModelResponse();
+    }
+  }
 }
 
   // @override

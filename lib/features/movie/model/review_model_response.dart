@@ -38,7 +38,7 @@ class AuthorDetails with _$AuthorDetails {
     String? name,
     String? username,
     @JsonKey(name: 'avatar_path') String? avatarPath,
-    int? rating,
+    double? rating,
   }) = _AuthorDetails;
 
   factory AuthorDetails.fromJson(Map<String, dynamic> json) => _$AuthorDetailsFromJson(json);

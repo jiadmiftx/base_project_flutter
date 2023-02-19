@@ -63,13 +63,13 @@ class _HomePageState extends State<HomePage> {
       _Tab(
         iconActive: Icons.movie_creation_outlined,
         iconInactive: Icons.movie,
-        title: 'Home',
+        title: 'Movie',
         route: MovieRoute(),
       ),
       _Tab(
         iconActive: Icons.live_tv_sharp,
         iconInactive: Icons.live_tv_rounded,
-        title: 'Movie',
+        title: 'TV+',
         route: TvRoute(),
       ),
       _Tab(

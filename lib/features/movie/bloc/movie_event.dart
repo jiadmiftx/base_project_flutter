@@ -8,10 +8,11 @@ abstract class MovieEvent extends Equatable {
 }
 
 class DataMovieEvent extends MovieEvent {
-  const DataMovieEvent();
+  final String type;
+  const DataMovieEvent({required this.type});
 
   @override
-  List<Object> get props => <Object>[];
+  List<Object> get props => <Object>[type];
 }
 
 class DataDetailMovieEvent extends MovieEvent {

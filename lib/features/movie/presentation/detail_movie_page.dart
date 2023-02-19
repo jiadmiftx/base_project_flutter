@@ -91,20 +91,44 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                     Text14BlackRegular("${data?.overview}").padded(12),
                     Divider(),
                     Text18BlackBold("Reviews").padded(12),
-                    state.reviewModelResponse?.totalResults != null ?
-                    Container(
-                      height: MediaQuery.of(context).size.height / 2,
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: state.reviewModelResponse!.results!.length > 3 ? 3 : state.reviewModelResponse?.results?.length,
-                        itemBuilder: (context, index) {
-                          var reviewer = state.reviewModelResponse?.results;
-                          return Card(
-                            child: Text12BlackRegular("${reviewer?[index].author ?? "Reviewer"}"),
-                          );
-                        }),
-                    ) : Center(child: Text("Empty Review")).bottomPadded20()
+                    state.reviewModelResponse?.totalResults != null
+                        ? Container(
+                            height: MediaQuery.of(context).size.height / 2,
+                            child: ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: state.reviewModelResponse!.results!.length > 3 ? 3 : state.reviewModelResponse?.results?.length,
+                                itemBuilder: (context, index) {
+                                  var reviewer = state.reviewModelResponse?.results;
+                                  return Card(
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        width: 30,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(25),
+                                          child: Image.network(
+                                            'https://image.tmdb.org/t/p/w500${reviewer?[index].authorDetails?.avatarPath}',
+                                          ),
+                                        ),
+                                      ).padded(6),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text12Black87Bold("${reviewer?[index].author ?? "Reviewer"}"),
+                                            Text("${reviewer?[index].content ?? "....."}", maxLines: 5, overflow: TextOverflow.ellipsis),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ).padded(8));
+                                }),
+                          )
+                        : Center(child: Text("Empty Review")).bottomPadded20()
                     // Text14BlackRegular("${data?}").padded(12),
                   ],
                 ),

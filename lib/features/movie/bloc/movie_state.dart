@@ -2,6 +2,8 @@ part of 'movie_bloc.dart';
 
 class MovieState extends Equatable {
   final MovieModelResponse? movieModelResponse;
+  final MovieModelResponse? upcomingModelResponse;
+  final MovieModelResponse? popularModelResponse;
   final DetailMovieResponse? detailMovieResponse;
   final ReviewModelResponse? reviewModelResponse;
   final bool isloading;
@@ -9,6 +11,8 @@ class MovieState extends Equatable {
 
   const MovieState({
     this.movieModelResponse,
+    this.upcomingModelResponse,
+    this.popularModelResponse,
     this.detailMovieResponse,
     this.reviewModelResponse,
     this.isloading = false,
@@ -17,6 +21,8 @@ class MovieState extends Equatable {
 
   MovieState copyWith({
     MovieModelResponse? movieModelResponse,
+    MovieModelResponse? upcomingModelResponse,
+    MovieModelResponse? popularModelResponse,
     DetailMovieResponse? detailMovieResponse,
     ReviewModelResponse? reviewModelResponse,
     bool? isloading,
@@ -24,6 +30,8 @@ class MovieState extends Equatable {
   }) {
     return MovieState(
       movieModelResponse: movieModelResponse ?? this.movieModelResponse,
+      upcomingModelResponse: upcomingModelResponse ?? this.upcomingModelResponse,
+      popularModelResponse: popularModelResponse ?? this.popularModelResponse,
       detailMovieResponse: detailMovieResponse ?? this.detailMovieResponse,
       reviewModelResponse: reviewModelResponse ?? this.reviewModelResponse,
       isloading: isloading ?? this.isloading,
@@ -35,6 +43,8 @@ class MovieState extends Equatable {
   List<Object?> get props => <Object>[
         isloading,
         movieModelResponse ?? MovieModelResponse(),
+        popularModelResponse ?? MovieModelResponse(),
+        upcomingModelResponse ?? MovieModelResponse(),
         detailMovieResponse ?? DetailMovieResponse(),
         reviewModelResponse ?? ReviewModelResponse(),
         errorMessage,
@@ -45,6 +55,8 @@ class MovieState extends Equatable {
     return 'MovieState: { '
         'movieModelResponse: $movieModelResponse, '
         'detailMovieResponse: $detailMovieResponse'
+        'popularModelResponse: $popularModelResponse'
+        'upcomingModelResponse: $upcomingModelResponse' 
         'reviewModelResponse: $reviewModelResponse'
         'isloading: $isloading, '
         'errorMessage: $errorMessage, '

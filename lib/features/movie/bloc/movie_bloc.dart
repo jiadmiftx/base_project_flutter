@@ -24,9 +24,22 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   Future<void> _doFetchMoviePlayingNow(DataMovieEvent event, Emitter<MovieState> emit) async {
     try {
       emit(state.copyWith(isloading: true));
-      final data = await _repository.getMovieNowPlaying(apikey: apikey);
-      log('Data bloc ${data.toJson()}');
-      emit(state.copyWith(isloading: false, movieModelResponse: data));
+      if (event.type == 'now_playing') {
+        final data = await _repository.getMovie(apikey: apikey, type: event.type);
+        log('Now ${data.toJson()}');
+        emit(state.copyWith(movieModelResponse: data));
+      } else if (event.type == 'upcoming') {
+        final data = await _repository.getMovie(apikey: apikey, type: event.type);
+        log('upcoming ${data.toJson()}');
+
+        emit(state.copyWith(upcomingModelResponse: data));
+      } else if (event.type == 'top_rated') {
+        final data = await _repository.getMovie(apikey: apikey, type: event.type);
+        log('popular ${data.toJson()}');
+
+        emit(state.copyWith(popularModelResponse: data));
+      }
+      emit(state.copyWith(isloading: false));
     } catch (e) {
       emit(state.copyWith(isloading: false, errorMessage: e.toString()));
     }
@@ -35,7 +48,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   Future<void> _doFetchDetailMoviePlayingNow(DataDetailMovieEvent event, Emitter<MovieState> emit) async {
     try {
       emit(state.copyWith(isloading: true));
-      final data = await _repository.getMovieDetailNowPlaying(apikey: apikey, movie_id: event.movieid);
+      final data = await _repository.getMovieDetail(apikey: apikey, movie_id: event.movieid);
       log('Data bloc ${data.toJson()}');
       emit(state.copyWith(isloading: false, detailMovieResponse: data));
     } catch (e) {
