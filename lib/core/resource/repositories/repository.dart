@@ -6,6 +6,7 @@ import 'package:flutter_base/features/movie/model/movie_model.dart';
 import 'package:flutter_base/features/movie/model/review_model_response.dart';
 import 'package:flutter_base/features/tv/model/tv_detail_model.dart';
 import 'package:flutter_base/features/tv/model/tv_model.dart';
+import 'package:flutter_base/features/tv/model/tv_reviews_response.dart';
 
 class Repository implements RepositoryInterface {
   final RestClient _rest;
@@ -68,6 +69,18 @@ class Repository implements RepositoryInterface {
       return TvDetailModelResponse();
     } catch (e) {
       return TvDetailModelResponse();
+    }
+  }
+
+  @override
+  Future<TvReviewsResponse> getReviewTvDetail({required String apikey, required int tv_id}) async {
+    try {
+      final _response = await _rest.getReviewTvDetail(apikey, tv_id);
+      return _response;
+    } on DioError catch (e) {
+      return TvReviewsResponse();
+    } catch (e) {
+      return TvReviewsResponse();
     }
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_base/features/movie/presentation/movie_page.dart';
 import 'package:flutter_base/features/tv/presentation/tv_page.dart';
 import 'package:flutter_base/features/boarding/presentation/boarding_page.dart';
 import 'package:flutter_base/features/profile/presentation/profile_page.dart';
+import 'package:flutter_base/features/tv/presentation/detail_movie_page.dart';
 import 'package:flutter_base/core/core.dart';
 
 
@@ -22,6 +23,7 @@ export 'router.gr.dart';
     path: 'home-screen',
   ),
   AutoRoute(page: DetailMoviePage, path: 'detail-movie-screen'),
+  AutoRoute(page: DetailTvPage, path: 'detail-tv-screen'),
 ])
 
 class $AppRouter {}

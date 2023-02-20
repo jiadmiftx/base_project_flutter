@@ -4,6 +4,7 @@ import 'package:flutter_base/features/movie/model/movie_model.dart';
 import 'package:flutter_base/features/movie/model/review_model_response.dart';
 import 'package:flutter_base/features/tv/model/tv_detail_model.dart';
 import 'package:flutter_base/features/tv/model/tv_model.dart';
+import 'package:flutter_base/features/tv/model/tv_reviews_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'rest_client.g.dart';
@@ -26,4 +27,8 @@ abstract class RestClient {
 
    @GET('3/tv/{tv_id}')
   Future<TvDetailModelResponse> getTvDetail(@Query('api_key') String apiKey, @Path() int tv_id);
+  
+   @GET('3/tv/{tv_id}/reviews')
+  Future<TvReviewsResponse> getReviewTvDetail(@Query('api_key') String apiKey, @Path() int tv_id);
+
 }

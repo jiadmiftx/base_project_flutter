@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/core/resource/injector/injection_container.dart';
 import 'package:flutter_base/features/movie/bloc/movie_bloc.dart';
+import 'package:flutter_base/features/tv/bloc/tv_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_base/core/resource/injector/injection_container.dart' as injector;
 
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
       ),
     );
     return MultiBlocProvider(providers: [
-       BlocProvider<MovieBloc>(create: (BuildContext context) => sl<MovieBloc>()),
+      BlocProvider<MovieBloc>(create: (BuildContext context) => sl<MovieBloc>()),
+      BlocProvider<TvBloc>(create: (BuildContext context) => sl<TvBloc>()),
     ], child: app);
   }
 }

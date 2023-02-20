@@ -5,7 +5,6 @@ import 'package:flutter_base/core/resource/injector/injection_container.dart';
 import 'package:flutter_base/core/utils/extensions/widget_util.dart';
 import 'package:flutter_base/features/movie/bloc/movie_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class MoviePage extends StatefulWidget {
   const MoviePage({super.key});
