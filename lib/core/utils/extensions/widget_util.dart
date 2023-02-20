@@ -136,8 +136,6 @@ class Loadable extends StatefulWidget {
 
   final bool safeTop;
 
-  final bool isUsingGradient;
-
   final bool extendBodyBehindAppBar;
 
   const Loadable({
@@ -152,7 +150,6 @@ class Loadable extends StatefulWidget {
     this.floatingActionButton,
     this.loading = false,
     this.safeTop = true,
-    this.isUsingGradient = true,
     this.extendBodyBehindAppBar = false,
     this.onRefresh,
     this.refreshController,
@@ -184,13 +181,6 @@ class _State extends State<Loadable> {
                   extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
                   body: Stack(
                     children: [
-                      if (widget.isUsingGradient)
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Image.asset(
-                            getSourceByPng('header_gradient'),
-                          ),
-                        ),
                       widget.child,
                       if (widget.extra != null) widget.extra!,
                       Align(child: widget.bottomSheet ?? const SizedBox(), alignment: Alignment.bottomCenter),
@@ -216,13 +206,6 @@ class _State extends State<Loadable> {
                 extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
                 body: Stack(
                   children: [
-                    if (widget.isUsingGradient)
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: Image.asset(
-                          getSourceByPng('header_gradient'),
-                        ),
-                      ),
                     widget.child,
                     if (widget.extra != null) widget.extra!,
                     Align(child: widget.bottomSheet ?? const SizedBox(), alignment: Alignment.bottomCenter),

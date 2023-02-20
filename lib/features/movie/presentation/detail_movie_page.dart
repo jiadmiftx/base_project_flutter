@@ -136,7 +136,6 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
             ),
           ),
           loading: state.isloading,
-          isUsingGradient: false,
         );
       },
     );

@@ -30,7 +30,9 @@ class _TvPageState extends State<TvPage> {
       builder: (BuildContext context, TvState state) {
         return Loadable(
           appBar: AppBar(
-            title: Text("Movie Time!"),
+            centerTitle: true,
+            backgroundColor: Colors.black,
+            title: Text16WhiteBold("Television"),
           ),
           child: SafeArea(
             child: RefreshIndicator(
@@ -225,7 +227,6 @@ class _TvPageState extends State<TvPage> {
             ),
           ),
           loading: state.isloading,
-          isUsingGradient: false,
         );
       },
     );

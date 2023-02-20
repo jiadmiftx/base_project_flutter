@@ -16,7 +16,7 @@ class _BoardingPageState extends State<BoardingPage> {
         onPressed: (){
           // context.r
         },
-        child: Text("next"),)),
+        child: Text("Login"),)),
     );
   }
 }

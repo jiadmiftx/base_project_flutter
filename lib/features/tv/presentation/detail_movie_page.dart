@@ -102,7 +102,7 @@ class _DetailTvPageState extends State<DetailTvPage> {
                                   var reviewer = state.tvReviewsResponse?.results;
                                   return Card(
                                       child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         height: 30,
@@ -136,7 +136,6 @@ class _DetailTvPageState extends State<DetailTvPage> {
             ),
           ),
           loading: state.isloading,
-          isUsingGradient: false,
         );
       },
     );
